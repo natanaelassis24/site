@@ -283,12 +283,6 @@ function App() {
       </header>
 
       <main className="content">
-        <div className="breadcrumb">
-          <span>CATALOG / BIKES</span>
-          <span>YOUR AREA</span>
-          <span>GRANDE</span>
-        </div>
-
         <section className="catalog" id="catalogo">
           <div className="catalog-grid top-row">
             <BikeCard bike={pick(0)} />
