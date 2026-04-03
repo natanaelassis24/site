@@ -122,9 +122,6 @@ function ContactPage({ onBack }) {
       <main className="content contact-content">
         <section className="contact-card contact-page-card place-card">
           <div className="place-visual">
-            <div className="place-photo place-photo-logo">
-              <StoreLogo />
-            </div>
             <div className="place-photo place-photo-map">
               <iframe
                 title="Localização da loja"
@@ -136,6 +133,9 @@ function ContactPage({ onBack }) {
           </div>
 
           <div className="contact-copy place-copy">
+            <div className="contact-brand">
+              <StoreLogo />
+            </div>
             <p className="eyebrow">CONTACT</p>
             <h1>{store.name}</h1>
             <p className="contact-text">{store.type}</p>
