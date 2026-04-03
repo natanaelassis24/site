@@ -78,13 +78,96 @@ function FeatureCard() {
   );
 }
 
+function ContactPage({ onBack }) {
+  const storeLocation = 'Av. Paulista, 1000 - Bela Vista, São Paulo - SP';
+
+  return (
+    <div className="page contact-page">
+      <header className="header">
+        <div className="header-inner">
+          <div className="logo">BIKE</div>
+          <nav className="nav-tabs" aria-label="Main">
+            <button type="button" onClick={onBack}>
+              CATÁLOGO
+            </button>
+            <button type="button" className="active">
+              CONTATO
+            </button>
+          </nav>
+          <div className="searchbar contact-search">
+            <input type="text" value="Contato da loja" readOnly aria-label="Contato da loja" />
+            <button type="button" aria-label="Contato">
+              <span className="search-icon" />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main className="content contact-content">
+        <section className="contact-card contact-page-card">
+          <div className="contact-copy">
+            <p className="eyebrow">CONTACT</p>
+            <h1>Fale com a loja</h1>
+            <p className="contact-text">
+              Atendimento para vendas, trocas e suporte. Encontre a loja no mapa ou envie
+              mensagem antes de sair de casa.
+            </p>
+
+            <div className="contact-grid">
+              <div className="contact-item">
+                <span>Endereço</span>
+                <strong>{storeLocation}</strong>
+              </div>
+              <div className="contact-item">
+                <span>Horário</span>
+                <strong>Seg a Sáb, 09:00 - 18:00</strong>
+              </div>
+              <div className="contact-item">
+                <span>WhatsApp</span>
+                <strong>(11) 99999-9999</strong>
+              </div>
+              <div className="contact-item">
+                <span>E-mail</span>
+                <strong>contato@bikecatalogo.com</strong>
+              </div>
+            </div>
+
+            <div className="contact-actions">
+              <a
+                className="contact-button"
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(storeLocation)}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Abrir no Google Maps
+              </a>
+              <button type="button" className="contact-back" onClick={onBack}>
+                Voltar ao catálogo
+              </button>
+            </div>
+          </div>
+
+          <div className="map-shell" aria-label="Mapa da loja">
+            <iframe
+              title="Localização da loja"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(storeLocation)}&output=embed`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
+
 function App() {
   const [activeCategory, setActiveCategory] = React.useState('motorcycles');
   const [draftQuery, setDraftQuery] = React.useState('');
   const [query, setQuery] = React.useState('');
   const [page, setPage] = React.useState(1);
   const [expanded, setExpanded] = React.useState(false);
-  const storeLocation = 'Av. Paulista, 1000 - Bela Vista, São Paulo - SP';
+  const [view, setView] = React.useState('catalog');
 
   const filtered = React.useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -105,12 +188,12 @@ function App() {
     setPage(1);
   };
 
+  if (view === 'contact') {
+    return <ContactPage onBack={() => setView('catalog')} />;
+  }
+
   return (
     <div className="page">
-      <header className="topline">
-        <div className="topline-inner" />
-      </header>
-
       <header className="header">
         <div className="header-inner">
           <div className="logo">BIKE</div>
@@ -128,6 +211,9 @@ function App() {
                 {category.label}
               </button>
             ))}
+            <button type="button" onClick={() => setView('contact')}>
+              CONTATO
+            </button>
           </nav>
           <form className="searchbar" onSubmit={handleSearchSubmit}>
             <input
@@ -217,60 +303,12 @@ function App() {
           <div className="footer-links right">
             <a href="#catalogo">ABOUT US</a>
             <a href="#catalogo">PLACE AD</a>
-            <a href="#contato">CONTACT</a>
+            <button type="button" className="footer-link-button" onClick={() => setView('contact')}>
+              CONTACT
+            </button>
           </div>
         </div>
       </footer>
-
-      <section className="contact-section" id="contato">
-        <div className="contact-card">
-          <div className="contact-copy">
-            <p className="eyebrow">CONTACT</p>
-            <h2>Fale com a loja</h2>
-            <p className="contact-text">
-              Atendimento para vendas, trocas e suporte. Use o mapa para encontrar a loja
-              ou envie mensagem antes de sair de casa.
-            </p>
-
-            <div className="contact-grid">
-              <div className="contact-item">
-                <span>Endereço</span>
-                <strong>{storeLocation}</strong>
-              </div>
-              <div className="contact-item">
-                <span>Horário</span>
-                <strong>Seg a Sáb, 09:00 - 18:00</strong>
-              </div>
-              <div className="contact-item">
-                <span>WhatsApp</span>
-                <strong>(11) 99999-9999</strong>
-              </div>
-              <div className="contact-item">
-                <span>E-mail</span>
-                <strong>contato@bikecatalogo.com</strong>
-              </div>
-            </div>
-
-            <a
-              className="contact-button"
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(storeLocation)}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Abrir no Google Maps
-            </a>
-          </div>
-
-          <div className="map-shell" aria-label="Mapa da loja">
-            <iframe
-              title="Localização da loja"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(storeLocation)}&output=embed`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

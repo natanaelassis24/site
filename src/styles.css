@@ -464,6 +464,15 @@ button {
   color: var(--muted);
 }
 
+.footer-link-button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
 .footer-brand {
   font-weight: 900;
   letter-spacing: 0.18em;
@@ -496,6 +505,19 @@ button {
   box-shadow: var(--shadow);
 }
 
+.contact-page {
+  min-height: 100vh;
+  padding-bottom: 20px;
+}
+
+.contact-content {
+  padding-top: 16px;
+}
+
+.contact-page-card {
+  min-height: 620px;
+}
+
 .contact-copy {
   padding: 10px 8px 10px 10px;
 }
@@ -515,6 +537,14 @@ button {
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 0.95;
   letter-spacing: -0.05em;
+}
+
+.contact-copy h1 {
+  margin: 0;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
 }
 
 .contact-text {
@@ -569,6 +599,22 @@ button {
   box-shadow: 0 8px 18px rgba(240, 184, 0, 0.24);
 }
 
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-back {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0 18px;
+  min-height: 44px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #111;
+  font-weight: 800;
+}
+
 .map-shell {
   min-height: 360px;
   overflow: hidden;
@@ -612,6 +658,10 @@ button {
 
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .contact-page-card {
+    min-height: auto;
   }
 }
 
