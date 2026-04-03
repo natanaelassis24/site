@@ -96,6 +96,18 @@ function StoreLogo({ compact = false }) {
 
 function ContactPage({ onBack }) {
   const storeLocation = store.address;
+  const [panel, setPanel] = React.useState('overview');
+  const [copied, setCopied] = React.useState(false);
+
+  const copyAddress = async () => {
+    try {
+      await navigator.clipboard.writeText(storeLocation);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      setCopied(false);
+    }
+  };
 
   return (
     <div className="page contact-page">
@@ -141,67 +153,99 @@ function ContactPage({ onBack }) {
             <p className="contact-text">{store.type}</p>
 
             <div className="contact-actions">
-              <a
+              <button
+                type="button"
                 className="contact-button"
-                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(storeLocation)}`}
-                target="_blank"
-                rel="noreferrer"
+                onClick={() => setPanel('overview')}
               >
                 Directions
-              </a>
-              <a
+              </button>
+              <button
+                type="button"
                 className="contact-secondary"
-                href={`https://www.google.com/search?q=${encodeURIComponent(store.name + ' avaliações')}`}
-                target="_blank"
-                rel="noreferrer"
+                onClick={() => setPanel('reviews')}
               >
                 Reviews
-              </a>
-              <a
+              </button>
+              <button
+                type="button"
                 className="contact-secondary"
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(storeLocation)}`}
-                target="_blank"
-                rel="noreferrer"
+                onClick={() => setPanel('details')}
               >
                 Save
-              </a>
-              <a
+              </button>
+              <button
+                type="button"
                 className="contact-secondary"
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(storeLocation)}`}
-                target="_blank"
-                rel="noreferrer"
+                onClick={copyAddress}
               >
                 Share
-              </a>
+              </button>
             </div>
 
-            <div className="contact-grid">
-              <div className="contact-item">
-                <span>Address</span>
-                <strong>{storeLocation}</strong>
+            {panel === 'overview' ? (
+              <div className="contact-grid">
+                <div className="contact-item">
+                  <span>Address</span>
+                  <strong>{storeLocation}</strong>
+                </div>
+                <div className="contact-item">
+                  <span>Hours</span>
+                  <strong>{store.hours}</strong>
+                </div>
+                <div className="contact-item">
+                  <span>Phone</span>
+                  <strong>Not informed</strong>
+                </div>
+                <div className="contact-item">
+                  <span>Website</span>
+                  <strong>Not informed</strong>
+                </div>
               </div>
-              <div className="contact-item">
-                <span>Hours</span>
-                <strong>{store.hours}</strong>
+            ) : null}
+
+            {panel === 'reviews' ? (
+              <div className="reviews-panel">
+                <div className="reviews-head">
+                  <span className="reviews-score">Avaliações no site</span>
+                  <strong>{copied ? 'Endereço copiado' : 'Sem link externo'}</strong>
+                </div>
+                <p className="contact-text">
+                  As informações ficam dentro da página. Se quiser, eu posso preencher esta área com
+                  notas e comentários reais quando você me passar os dados.
+                </p>
+                <div className="review-list">
+                  <article className="review-card">
+                    <strong>Atendimento</strong>
+                    <p>Espaço reservado para avaliações internas da loja.</p>
+                  </article>
+                  <article className="review-card">
+                    <strong>Localização</strong>
+                    <p>Mapa e endereço ficam visíveis aqui mesmo, sem sair do site.</p>
+                  </article>
+                </div>
               </div>
-              <div className="contact-item">
-                <span>Phone</span>
-                <strong>Not informed</strong>
+            ) : null}
+
+            {panel === 'details' ? (
+              <div className="details-panel">
+                <div className="contact-grid">
+                  <div className="contact-item">
+                    <span>Address</span>
+                    <strong>{storeLocation}</strong>
+                  </div>
+                  <div className="contact-item">
+                    <span>Hours</span>
+                    <strong>{store.hours}</strong>
+                  </div>
+                </div>
+                <p className="contact-text">
+                  Use o botão Share para copiar o endereço. Tudo fica aqui dentro da página.
+                </p>
               </div>
-              <div className="contact-item">
-                <span>Website</span>
-                <strong>Not informed</strong>
-              </div>
-            </div>
+            ) : null}
 
             <div className="contact-linkline">
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(storeLocation)}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                See on Google Maps
-              </a>
               <button type="button" onClick={onBack}>
                 Back to catalog
               </button>
