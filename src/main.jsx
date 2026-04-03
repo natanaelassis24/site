@@ -8,6 +8,14 @@ const categories = [
   { label: 'ACESSORIOS', value: 'accessories' },
 ];
 
+const store = {
+  name: 'POUPA BIKE',
+  type: 'Bicycle repair shop in São José dos Campos, State of São Paulo',
+  address: 'R. Tottoni, 596 - Jardim Oriente, São José dos Campos - SP, 12236-020',
+  hours: 'Open · Closes 6 PM',
+  logo: '/468440490_1332681157718709_5156759874307211932_n.jpg',
+};
+
 const bikes = [
   { id: 'versys', category: 'bicycles', brand: 'SUZUKI', name: 'KLE650 VERSYS', price: '$ 11 900', stats: ['649 cc', '69 hp', '190 kg'], image: '/Honda_sce_concept0001-jpg.webp' },
   { id: 'ktm', category: 'bicycles', brand: 'KTM', name: '1190 KTM', price: '$ 9 500', stats: ['1195 cc', '150 hp', '212 kg'], image: '/16235_moto-scooter-sc-20-2000w-67v-preto-brilho-boram_z2_638556022997147327.webp' },
@@ -78,14 +86,22 @@ function FeatureCard() {
   );
 }
 
+function StoreLogo({ compact = false }) {
+  return (
+    <div className={`store-logo ${compact ? 'compact' : ''}`}>
+      <img src={store.logo} alt={store.name} />
+    </div>
+  );
+}
+
 function ContactPage({ onBack }) {
-  const storeLocation = 'Av. Paulista, 1000 - Bela Vista, São Paulo - SP';
+  const storeLocation = store.address;
 
   return (
     <div className="page contact-page">
       <header className="header">
         <div className="header-inner">
-          <div className="logo">BIKE</div>
+          <StoreLogo compact />
           <nav className="nav-tabs" aria-label="Main">
             <button type="button" onClick={onBack}>
               CATÁLOGO
@@ -104,56 +120,92 @@ function ContactPage({ onBack }) {
       </header>
 
       <main className="content contact-content">
-        <section className="contact-card contact-page-card">
-          <div className="contact-copy">
-            <p className="eyebrow">CONTACT</p>
-            <h1>Fale com a loja</h1>
-            <p className="contact-text">
-              Atendimento para vendas, trocas e suporte. Encontre a loja no mapa ou envie
-              mensagem antes de sair de casa.
-            </p>
-
-            <div className="contact-grid">
-              <div className="contact-item">
-                <span>Endereço</span>
-                <strong>{storeLocation}</strong>
-              </div>
-              <div className="contact-item">
-                <span>Horário</span>
-                <strong>Seg a Sáb, 09:00 - 18:00</strong>
-              </div>
-              <div className="contact-item">
-                <span>WhatsApp</span>
-                <strong>(11) 99999-9999</strong>
-              </div>
-              <div className="contact-item">
-                <span>E-mail</span>
-                <strong>contato@bikecatalogo.com</strong>
-              </div>
+        <section className="contact-card contact-page-card place-card">
+          <div className="place-visual">
+            <div className="place-photo place-photo-logo">
+              <StoreLogo />
             </div>
+            <div className="place-photo place-photo-map">
+              <iframe
+                title="Localização da loja"
+                src={`https://www.google.com/maps?q=${encodeURIComponent(storeLocation)}&output=embed`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+
+          <div className="contact-copy place-copy">
+            <p className="eyebrow">CONTACT</p>
+            <h1>{store.name}</h1>
+            <p className="contact-text">{store.type}</p>
 
             <div className="contact-actions">
               <a
                 className="contact-button"
+                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(storeLocation)}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Directions
+              </a>
+              <a
+                className="contact-secondary"
+                href={`https://www.google.com/search?q=${encodeURIComponent(store.name + ' avaliações')}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Reviews
+              </a>
+              <a
+                className="contact-secondary"
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(storeLocation)}`}
                 target="_blank"
                 rel="noreferrer"
               >
-                Abrir no Google Maps
+                Save
               </a>
-              <button type="button" className="contact-back" onClick={onBack}>
-                Voltar ao catálogo
+              <a
+                className="contact-secondary"
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(storeLocation)}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Share
+              </a>
+            </div>
+
+            <div className="contact-grid">
+              <div className="contact-item">
+                <span>Address</span>
+                <strong>{storeLocation}</strong>
+              </div>
+              <div className="contact-item">
+                <span>Hours</span>
+                <strong>{store.hours}</strong>
+              </div>
+              <div className="contact-item">
+                <span>Phone</span>
+                <strong>Not informed</strong>
+              </div>
+              <div className="contact-item">
+                <span>Website</span>
+                <strong>Not informed</strong>
+              </div>
+            </div>
+
+            <div className="contact-linkline">
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(storeLocation)}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                See on Google Maps
+              </a>
+              <button type="button" onClick={onBack}>
+                Back to catalog
               </button>
             </div>
-          </div>
-
-          <div className="map-shell" aria-label="Mapa da loja">
-            <iframe
-              title="Localização da loja"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(storeLocation)}&output=embed`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
           </div>
         </section>
       </main>
@@ -196,7 +248,7 @@ function App() {
     <div className="page">
       <header className="header">
         <div className="header-inner">
-          <div className="logo">BIKE</div>
+          <StoreLogo compact />
           <nav className="nav-tabs" aria-label="Main">
             {categories.map((category) => (
               <button
@@ -299,7 +351,7 @@ function App() {
             <a href="#catalogo">SCOOTERS</a>
             <a href="#catalogo">ACESSORIOS</a>
           </div>
-          <div className="footer-brand">BIKE</div>
+          <StoreLogo compact />
           <div className="footer-links right">
             <a href="#catalogo">ABOUT US</a>
             <a href="#catalogo">PLACE AD</a>
