@@ -84,6 +84,7 @@ function App() {
   const [query, setQuery] = React.useState('');
   const [page, setPage] = React.useState(1);
   const [expanded, setExpanded] = React.useState(false);
+  const storeLocation = 'Av. Paulista, 1000 - Bela Vista, São Paulo - SP';
 
   const filtered = React.useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -216,10 +217,60 @@ function App() {
           <div className="footer-links right">
             <a href="#catalogo">ABOUT US</a>
             <a href="#catalogo">PLACE AD</a>
-            <a href="#catalogo">CONTACT</a>
+            <a href="#contato">CONTACT</a>
           </div>
         </div>
       </footer>
+
+      <section className="contact-section" id="contato">
+        <div className="contact-card">
+          <div className="contact-copy">
+            <p className="eyebrow">CONTACT</p>
+            <h2>Fale com a loja</h2>
+            <p className="contact-text">
+              Atendimento para vendas, trocas e suporte. Use o mapa para encontrar a loja
+              ou envie mensagem antes de sair de casa.
+            </p>
+
+            <div className="contact-grid">
+              <div className="contact-item">
+                <span>Endereço</span>
+                <strong>{storeLocation}</strong>
+              </div>
+              <div className="contact-item">
+                <span>Horário</span>
+                <strong>Seg a Sáb, 09:00 - 18:00</strong>
+              </div>
+              <div className="contact-item">
+                <span>WhatsApp</span>
+                <strong>(11) 99999-9999</strong>
+              </div>
+              <div className="contact-item">
+                <span>E-mail</span>
+                <strong>contato@bikecatalogo.com</strong>
+              </div>
+            </div>
+
+            <a
+              className="contact-button"
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(storeLocation)}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Abrir no Google Maps
+            </a>
+          </div>
+
+          <div className="map-shell" aria-label="Mapa da loja">
+            <iframe
+              title="Localização da loja"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(storeLocation)}&output=embed`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
