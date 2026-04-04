@@ -4,6 +4,8 @@ import './styles.css';
 
 const IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'webp'];
 const MAX_GALLERY_IMAGES = 12;
+const ACCESSORY_PLACEHOLDER =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 1000'%3E%3Crect width='800' height='1000' rx='48' fill='%23f5f1e8'/%3E%3Ccircle cx='400' cy='320' r='110' fill='%23171719'/%3E%3Cpath d='M250 640c0-88 68-156 150-156s150 68 150 156v38H250z' fill='%23f2b437'/%3E%3Crect x='212' y='724' width='376' height='72' rx='24' fill='%23171719'/%3E%3Ctext x='400' y='900' text-anchor='middle' font-family='Arial' font-size='52' font-weight='700' fill='%23171719'%3EACESSORIO%3C/text%3E%3C/svg%3E";
 
 const categories = [
   { label: 'SCOOTERS', value: 'scooters' },
@@ -49,8 +51,7 @@ const catalog = [
     price: 'R$ 4.990,00',
     oldPrice: null,
     galleryFolder: '/goo-pix',
-    image:
-      'https://static.wixstatic.com/media/6adf91_21baa383155b46d8a66d0b0b6d9f794f~mv2.jpg/v1/fill/w_470,h_470,q_75,enc_avif,quality_auto/6adf91_21baa383155b46d8a66d0b0b6d9f794f~mv2.jpg',
+    image: '/goo-pix/1.png',
     summary: 'Scooter eletrica compacta para uso urbano diario.',
     specs: [
       'Modelo: PIX',
@@ -72,8 +73,7 @@ const catalog = [
     price: 'R$ 6.890,00',
     oldPrice: null,
     galleryFolder: '/one-1000w',
-    image:
-      'https://static.wixstatic.com/media/c5b38a_54a5222475114f77b9f18954b15d685d~mv2.jpg/v1/fill/w_2252,h_4000,al_c,q_90,enc_avif,quality_auto/c5b38a_54a5222475114f77b9f18954b15d685d~mv2.jpg',
+    image: '/one-1000w/1.png',
     summary: 'Scooter eletrica 1000W com foco em autonomia e praticidade.',
     specs: [
       'Modelo: ONE',
@@ -95,8 +95,7 @@ const catalog = [
     price: 'R$ 7.300,00',
     oldPrice: null,
     galleryFolder: '/rapid-goo-1000w',
-    image:
-      'https://static.wixstatic.com/media/c5b38a_30fc964c782e41ed96c9faf4b403941a~mv2.jpg/v1/fill/w_3024,h_4032,al_c,q_90,enc_avif,quality_auto/c5b38a_30fc964c782e41ed96c9faf4b403941a~mv2.jpg',
+    image: '/rapid-goo-1000w/1.png',
     summary: 'Scooter eletrica urbana com design moderno e bateria removivel.',
     specs: [
       'Modelo: RAPID',
@@ -118,8 +117,7 @@ const catalog = [
     price: 'R$ 11.990,00',
     oldPrice: null,
     galleryFolder: '/701-1000w',
-    image:
-      'https://static.wixstatic.com/media/c5b38a_44e7ecfb592342099a192ebaadcc209c~mv2.jpg/v1/fill/w_3024,h_4032,al_c,q_90,enc_avif,quality_auto/c5b38a_44e7ecfb592342099a192ebaadcc209c~mv2.jpg',
+    image: '/701-1000w/1.png',
     summary: 'Scooter eletrica premium da linha 701 com visual mais robusto.',
     specs: [
       'Modelo: 701',
@@ -141,8 +139,7 @@ const catalog = [
     price: 'R$ 8.500,00',
     oldPrice: null,
     galleryFolder: '/x12-brutus-1000w',
-    image:
-      'https://static.wixstatic.com/media/c5b38a_40ea47f3c32645e785c71be6ef86551c~mv2.jpg/v1/fill/w_3024,h_4032,al_c,q_90,enc_avif,quality_auto/c5b38a_40ea47f3c32645e785c71be6ef86551c~mv2.jpg',
+    image: '/x12-brutus-1000w/1.png',
     summary: 'Scooter eletrica de pneu largo com visual encorpado para uso urbano.',
     specs: [
       'Modelo: X12 Brutus',
@@ -164,8 +161,7 @@ const catalog = [
     price: 'R$ 10.990,00',
     oldPrice: null,
     galleryFolder: '/tera-1000w',
-    image:
-      'https://static.wixstatic.com/media/c5b38a_31de7c7f2a0345118e8ef73d8a7ea84e~mv2.jpg/v1/fill/w_3000,h_4000,al_c,q_90,enc_avif,quality_auto/c5b38a_31de7c7f2a0345118e8ef73d8a7ea84e~mv2.jpg',
+    image: '/tera-1000w/1.png',
     summary: 'Scooter eletrica esportiva com conjunto 1000W e rodas largas.',
     specs: [
       'Modelo: TERA',
@@ -187,8 +183,7 @@ const catalog = [
     price: 'R$ 8.990,00',
     oldPrice: 'R$ 11.990,00',
     galleryFolder: '/x12-pro-1000w',
-    image:
-      'https://static.wixstatic.com/media/c5b38a_86f8d9911e0148e2a245b89936d31f26~mv2.jpg/v1/fill/w_3024,h_4032,al_c,q_90,enc_avif,quality_auto/c5b38a_86f8d9911e0148e2a245b89936d31f26~mv2.jpg',
+    image: '/x12-pro-1000w/1.png',
     summary: 'Scooter eletrica X12-Pro com proposta urbana e visual agressivo.',
     specs: [
       'Modelo: X12-Pro',
@@ -210,7 +205,7 @@ const catalog = [
     price: 'R$ 8.990,00',
     oldPrice: null,
     galleryFolder: '/superlet-4',
-    image: 'https://www.lncomercial.com.br/uploads/1/2/9/9/129993666/s889948855525873748_p13_i1_w500.jpeg',
+    image: '/superlet-4/1.png',
     summary: 'Ciclomotor com motor 49cc e cambio semi automatico para uso urbano leve.',
     specs: ['Marca: Amazon Motors', 'Motor: 49cc', '4 tempos', 'Semi automatico'],
     sourceLabel: 'Preco da captura + LN Comercial',
@@ -225,8 +220,7 @@ const catalog = [
     price: 'R$ 10.500,00',
     oldPrice: 'R$ 11.990,00',
     galleryFolder: '/dudu-1000w',
-    image:
-      'https://static.wixstatic.com/media/c5b38a_f99997e24fc6474fbf9cabae682823eb~mv2.jpg/v1/fill/w_1999,h_1824,al_c,q_90,enc_avif,quality_auto/c5b38a_f99997e24fc6474fbf9cabae682823eb~mv2.jpg',
+    image: '/dudu-1000w/1.png',
     summary: 'Scooter eletrica retrô com bau traseiro e acabamento inspirado em scooters classicas.',
     specs: [
       'Modelo: DUDU',
@@ -248,7 +242,7 @@ const catalog = [
     price: 'R$ 4.990,00',
     oldPrice: null,
     galleryFolder: '/patinete-800w',
-    image: 'https://static.wixstatic.com/media/c5b38a_4ba77c2ec01f49f3ae6fbbe4ebbf3f4a~mv2.png/v1/fill/w_1600,h_1600,al_c,q_90,enc_avif,quality_auto/c5b38a_4ba77c2ec01f49f3ae6fbbe4ebbf3f4a~mv2.png',
+    image: '/patinete-800w/1.png',
     summary: 'Patinete eletrico para deslocamentos curtos e uso leve urbano.',
     specs: [
       'Marca: Goo',
@@ -270,7 +264,7 @@ const catalog = [
     price: 'R$ 299,00',
     oldPrice: null,
     galleryFolder: '/capacete-aberto',
-    image: 'https://images.tcdn.com.br/img/img_prod/1060526/capacete_aberto_new_atomic_preto_fosco_pro_tork_14561_1_2f64d4f21cf9e5766a635594073648fe.jpg',
+    image: ACCESSORY_PLACEHOLDER,
     summary: 'Capacete aberto para uso urbano com viseira e acabamento premium.',
     specs: ['Uso urbano', 'Viseira frontal', 'Forro interno', 'Acessorio real'],
     sourceLabel: 'Referencia comercial de acessorio',
@@ -285,7 +279,7 @@ const catalog = [
     price: 'R$ 189,00',
     oldPrice: null,
     galleryFolder: '/disco-freio',
-    image: 'https://cdn.awsli.com.br/600x1000/1065/1065324/produto/49665457/disco-de-freio-dianteiro-fan-160-1f2c1af1.jpg',
+    image: ACCESSORY_PLACEHOLDER,
     summary: 'Disco de freio para reposicao e manutencao do conjunto dianteiro.',
     specs: ['Peca de reposicao', 'Aco reforcado', 'Uso urbano', 'Acessorio real'],
     sourceLabel: 'Referencia comercial de acessorio',
@@ -300,7 +294,7 @@ const catalog = [
     price: 'R$ 249,00',
     oldPrice: null,
     galleryFolder: '/bau-traseiro',
-    image: 'https://images.tcdn.com.br/img/img_prod/742781/bauleto_moto_pro_tork_28_litros_smart_box_kit_com_base_universal_623_1_9e8b1c4fd0b2d85a8f4ff7c83879d432.jpg',
+    image: ACCESSORY_PLACEHOLDER,
     summary: 'Bau traseiro para guardar itens do dia a dia e aumentar a praticidade.',
     specs: ['28 litros', 'Base universal', 'Uso urbano', 'Acessorio real'],
     sourceLabel: 'Referencia comercial de acessorio',
@@ -315,8 +309,7 @@ const catalog = [
     price: 'R$ 10.111,00',
     oldPrice: null,
     galleryFolder: '/x12-pro-max',
-    image:
-      'https://static.wixstatic.com/media/c5b38a_d8ba74ee55244ee6904dbde4b6fe5fa8~mv2.jpg/v1/fill/w_3024,h_4032,al_c,q_90,enc_avif,quality_auto/c5b38a_d8ba74ee55244ee6904dbde4b6fe5fa8~mv2.jpg',
+    image: '/x12-pro-max/1.png',
     summary: 'Versao Pro Max da familia X12 com proposta mais robusta para o uso diario.',
     specs: [
       'Modelo: X12 Pro Max',
@@ -338,8 +331,7 @@ const catalog = [
     price: 'R$ 8.990,00',
     oldPrice: null,
     galleryFolder: '/x7-1000w',
-    image:
-      'https://static.wixstatic.com/media/c5b38a_4188a49e2d854b8ea9761a518fe0d85b~mv2.jpg/v1/fill/w_3024,h_4032,al_c,q_90,enc_avif,quality_auto/c5b38a_4188a49e2d854b8ea9761a518fe0d85b~mv2.jpg',
+    image: '/x7-1000w/1.png',
     summary: 'Scooter eletrica 1000W com visual esportivo e proposta urbana.',
     specs: [
       'Modelo: X7',
@@ -361,7 +353,7 @@ const catalog = [
     price: 'R$ 11.990,00',
     oldPrice: null,
     galleryFolder: '/triciclo-tri-1000w',
-    image: 'https://static.wixstatic.com/media/c5b38a_2fd89cb3fcda4177bf2f8d6e10f0ce08~mv2.jpg/v1/fill/w_2250,h_4000,al_c,q_90,enc_avif,quality_auto/c5b38a_2fd89cb3fcda4177bf2f8d6e10f0ce08~mv2.jpg',
+    image: '/triciclo-tri-1000w/1.png',
     summary: 'Triciclo eletrico com proposta de estabilidade e uso urbano.',
     specs: [
       'Modelo: TRICICLO TRI',
@@ -383,7 +375,7 @@ const catalog = [
     price: 'R$ 9.990,00',
     oldPrice: null,
     galleryFolder: '/sun-50-cc',
-    image: 'https://www.motorizzashop.com.br/cdn/shop/files/Ciclomotor_Amazon_Sun_50cc_Azul.png?v=1717526395',
+    image: '/sun-50-cc/1.png',
     summary: 'Ciclomotor urbano da linha Amazon com visual leve e mecanica 50cc.',
     specs: ['Marca: Amazon Motors', 'Motor: 50cc', 'Semi automatico', 'Uso urbano'],
     sourceLabel: 'Preco da captura + catalogo varejo',
@@ -595,9 +587,6 @@ function ProductModal({ item, onClose }) {
             </div>
 
             <div className="actions">
-              <a href={item.sourceUrl} target="_blank" rel="noreferrer">
-                Ver fonte
-              </a>
               <a href={store.whatsapp} target="_blank" rel="noreferrer">
                 WhatsApp
               </a>
@@ -605,8 +594,6 @@ function ProductModal({ item, onClose }) {
                 Ver mapa
               </a>
             </div>
-
-            <p className="source-note">Fonte usada: {item.sourceLabel}</p>
           </div>
         </div>
       </div>
@@ -850,8 +837,6 @@ function App() {
                     Ver mais
                   </button>
                 </div>
-
-                <p className="source-note">Fonte usada: {currentItem.sourceLabel}</p>
               </div>
             </div>
 
