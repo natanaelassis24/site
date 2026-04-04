@@ -706,6 +706,30 @@ function App() {
     setCurrentIndex((value) => (value + 1) % filtered.length);
   };
 
+  React.useEffect(() => {
+    const categoryLabel = categories.find((category) => category.value === activeCategory)?.label ?? 'CATALOGO';
+    const title =
+      view === 'contact'
+        ? `${store.name} | Contato`
+        : selectedItem
+          ? `${selectedItem.name} | ${store.name}`
+          : `${store.name} | ${categoryLabel}`;
+
+    const description =
+      view === 'contact'
+        ? `Entre em contato com a ${store.name}, veja mapa, telefone e WhatsApp.`
+        : selectedItem
+          ? `${selectedItem.name} com preco ${selectedItem.price} no catalogo da ${store.name}.`
+          : `${store.tagline} Categoria atual: ${categoryLabel}.`;
+
+    document.title = title;
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', description);
+    }
+  }, [activeCategory, selectedItem, view]);
+
   if (view === 'contact') {
     return (
       <div className="page">
