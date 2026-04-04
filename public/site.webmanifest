@@ -1,0 +1,22 @@
+{
+  "name": "Poupa Bike",
+  "short_name": "Poupa Bike",
+  "description": "Catalogo de scooters eletricas, ciclomotores, triciclos e acessorios.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#171719",
+  "theme_color": "#171719",
+  "icons": [
+    {
+      "src": "/468440490_1332681157718709_5156759874307211932_n.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/468440490_1332681157718709_5156759874307211932_n.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
